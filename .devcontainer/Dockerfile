@@ -12,4 +12,4 @@ COPY --chown=${DEVBOX_USER}:${DEVBOX_USER} devbox.json devbox.json
 
 RUN devbox run -- echo "Installed Packages."
 
-CMD ["devbox", "shell"]
+RUN devbox shellenv --init-hook >> ~/.profile
