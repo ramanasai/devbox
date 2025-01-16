@@ -1,0 +1,26 @@
+services:
+  ytdl:
+    build: .
+    volumes:
+      - ./downloads:/downloads
+    command: >
+      -x --format "worstaudio/worst"
+      --audio-format mp3
+      --audio-quality 128K
+      --embed-metadata
+      --embed-thumbnail
+      --no-playlist-reverse
+      --geo-bypass
+      --add-header "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+      --add-header "Accept-Language:en-US,en;q=0.5"
+      --extractor-args "youtube:formats=missing_pot"
+      --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      --ignore-errors
+      --no-check-certificates
+      --force-ipv4
+      --sleep-interval 5
+      --max-sleep-interval 10
+      --concurrent-fragments 5
+      --limit-rate 1M
+      -N 4
+      "https://youtube.com/playlist?list=PLsRNoUx8w3rOB98F3pbZOLeRaG3XOMpQd"
