@@ -1,0 +1,1 @@
+/workspaces/devbox/hacking-environment-setup/.devbox/virtenv/python3/bin/venvShellHook.sh

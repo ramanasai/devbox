@@ -1,0 +1,32 @@
+{
+    "name": "Devbox Remote Container",
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": ".."
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "fish",
+          "terminal.integrated.profiles.linux": {
+            "fish": {
+              "path": "/usr/bin/fish",
+              "icon": "terminal"
+            }
+          }
+        },
+        "extensions": [
+          "jetpack-io.devbox"
+        ]
+      }
+    },
+    "remoteUser": "devbox",
+    "runArgs": [
+        "--cap-add=NET_ADMIN", 
+        "--device=/dev/net/tun:/dev/net/tun",
+        "--privileged",
+        "--network=host",
+        "-e", "DISPLAY=${localEnv:DISPLAY}",
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+    ]
+}
